@@ -4,7 +4,7 @@ Kalkulator napravljen u React + Vite + TypeScript.
 
 ## Live verzija
 
-https://vercel.com/popovmilanas-projects/vite-react-calculator
+https://vite-react-calculator-seven.vercel.app/
 
 ## Pokretanje lokalno
 Pratite ove korake da biste pokrenuli projekat na svom računaru:
