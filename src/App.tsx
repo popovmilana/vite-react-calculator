@@ -1,122 +1,82 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [broj1, setBroj1] = useState('');
+  const [broj2, setBroj2] = useState('');
+  const [operacija, setOperacija] = useState('');
+  const [rezultat, setRezultat] = useState<number | string | null>(null);
+
+  const izracunaj = () => {
+    const a = parseFloat(broj1);
+    const b = parseFloat(broj2);
+
+    if (broj1 === '' || broj2 === '' || operacija === '') {
+      setRezultat('Popuni sva polja!');
+      return;
+    }
+
+    let konacno: number | string;
+    switch (operacija) {
+      case '+': konacno = a + b; break;
+      case '-': konacno = a - b; break;
+      case '*': konacno = a * b; break;
+      case '/': 
+        konacno = b !== 0 ? a / b : 'Ne može se deliti nulom!'; 
+        break;
+      default: konacno = 0;
+    }
+
+    setRezultat(konacno);
+  };
+
+  const resetuj = () => {
+    setBroj1('');
+    setBroj2('');
+    setOperacija('');
+    setRezultat(null);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="card">
+      <h1>KALKULATOR</h1>
 
-      <div className="ticks"></div>
+      <div className="inputs">
+        <input 
+          className="input"
+          type="number" 
+          value={broj1} 
+          onChange={(e) => setBroj1(e.target.value)} 
+          placeholder="Prvi broj"
+        />
+        <input 
+          className="input"
+          type="number" 
+          value={broj2} 
+          onChange={(e) => setBroj2(e.target.value)} 
+          placeholder="Drugi broj"
+        />
+      </div>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      <div className="ops">
+        <button className={operacija === '+' ? 'op-btn--active' : 'op-btn'} onClick={() => setOperacija('+')}>+</button>
+        <button className={operacija === '-' ? 'op-btn--active' : 'op-btn'} onClick={() => setOperacija('-')}>-</button>
+        <button className={operacija === '*' ? 'op-btn--active' : 'op-btn'} onClick={() => setOperacija('*')}>*</button>
+        <button className={operacija === '/' ? 'op-btn--active' : 'op-btn'} onClick={() => setOperacija('/')}>/</button>
+      </div>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <div className="actions">
+        <button className="btn btn--primary" onClick={izracunaj}>Izračunaj</button>
+        <button className="btn btn--ghost" onClick={resetuj}>Reset</button>
+      </div>
+
+      {rezultat !== null && (
+        <div className="result-box">
+          <p className="result-value">{rezultat}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
