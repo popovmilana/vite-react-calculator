@@ -1,0 +1,158 @@
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card h1 {
+  text-align: center;
+  color: #5e0f0f;
+  margin: 0 0 8px 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #5e0f0f;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.input:focus {
+  border-color: #8c0558;
+}
+
+.ops {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.op-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  cursor: pointer;
+  background: #f5e8f0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.op-btn:hover {
+  background: #f0cfe0;
+  border-color: #ee93bd;
+}
+
+.op-btn--active {
+  background: #ee93bd;
+  color: white;
+  border-color: #ee93bd;
+}
+
+.op-simbol {
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.op-naziv {
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background-color 0.15s;
+}
+
+.btn--primary {
+  background-color: #ee93bd;
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: #d6689e;
+}
+
+.btn--ghost {
+  background-color: #8c0558;
+  color: white;
+}
+
+.btn--ghost:hover {
+  background-color: #6e0444;
+}
+
+.result-box {
+  background: #f8f9fa;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 4px;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.result-box--error {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.result-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin: 0;
+}

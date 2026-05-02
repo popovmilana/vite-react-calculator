@@ -1,13 +1,23 @@
-* {
-  margin: 0;
-  padding: 0;
+:root {
+  --glavna: #500e34;
+  --siva-ivica: #ccc;
+  --bela: #ffffff;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  color: #333;    
+  background-color: #f8e1f4;
+  color: #333;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -18,9 +28,6 @@ body {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-:root {
-  --glavna-plava: #500e34;
-  --siva-ivica: #ccc;
-  --bela: #ffffff;
+  align-items: center;
+  padding: 1rem;
 }
